@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="45sp"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Large Text"
+    android:layout_weight="1"
+    android:id="@+id/accountNameLBL"
+    android:textSize="30sp"/>
+    <TextView
+        android:layout_width="0sp"
+        android:layout_height="45sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ID"
+        android:textColor="#FFF"
+        android:id="@+id/accountIDLBL"
+        android:textSize="30sp"/>
+</LinearLayout>

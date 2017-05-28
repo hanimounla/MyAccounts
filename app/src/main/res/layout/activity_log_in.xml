@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.hani__000.myaccounts.LogIn">
+
+    <LinearLayout
+        android:id="@+id/log_In_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ownerNameTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="User Name"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="30sp"
+                android:visibility="gone"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ownerPasswordTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="3"
+                android:lines="3"
+
+                android:password="true"
+                android:textSize="30sp" />
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/retypePass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Retype password"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="1"
+                android:lines="3"
+
+                android:password="true"
+                android:textSize="30sp"
+                android:visibility="gone"/>
+
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <com.rey.material.widget.CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rememberMeCB"
+        android:text="Remember password"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/log_In_Layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:checked="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:textSize="30sp"
+        android:id="@+id/btnLogin"
+        android:background="@drawable/log_in_button"
+        android:textColor="#FFF"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/rememberMeCB"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+</ScrollView>

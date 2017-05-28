@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Accounts</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_login">Log In to My Accounts</string>
+
+</resources>
