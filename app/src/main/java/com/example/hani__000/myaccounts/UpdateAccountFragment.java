@@ -149,6 +149,5 @@ public class UpdateAccountFragment extends Fragment {
         FragmentManager fragMgr = getActivity().getSupportFragmentManager();
         getActivity().setTitle("My Accounts");
         fragMgr.popBackStack();
-
     }
 }
