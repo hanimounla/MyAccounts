@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rey.material.widget.CheckBox;
 
+import org.w3c.dom.Text;
+
 public class LogIn extends AppCompatActivity {
     EditText userNameTB, userPasswordTB , retypepassTB;
+    TextView welcomeLBL;
     Button btnlogin;
     CheckBox rememberMe;
     boolean firstTime;
@@ -31,7 +35,10 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        setTitle("MY ACCOUNTS LOGIN");
+         welcomeLBL = (TextView)findViewById(R.id.welcomeLBL);
+        welcomeLBL.setText("My Accounts Sign Up");
+
+
         pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
 
@@ -99,7 +106,8 @@ public class LogIn extends AppCompatActivity {
         else
         {
             firstTime = false;
-            setTitle("Welcome back "+pref.getString(PREF_USERNAME,""));
+            welcomeLBL.setText("Welcome " + pref.getString(PREF_USERNAME,""));
+//            setTitle("Welcome back "+pref.getString(PREF_USERNAME,""));
 
         }
         return firstTime;

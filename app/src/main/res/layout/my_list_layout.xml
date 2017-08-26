@@ -8,6 +8,7 @@
     android:layout_height="45sp"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text="Large Text"
+    android:textColor="#fff"
     android:layout_weight="1"
     android:id="@+id/accountNameLBL"
     android:textSize="30sp"/>

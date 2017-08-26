@@ -1,5 +1,6 @@
 package com.example.hani__000.myaccounts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rey.material.widget.FloatingActionButton;
@@ -58,9 +61,8 @@ public class AllAccountsFragment extends Fragment {
         accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String selected = accountsList.getItemAtPosition(i).toString();
-                String [] values = selected.split(", ");
-                int accountID = Integer.parseInt(values[1].substring(2,values[1].length()-1));
+                TextView tt = (TextView) view.findViewById(R.id.accountIDLBL);
+                int accountID = Integer.parseInt(tt.getText().toString());
                 FragmentManager fragMgr = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragTrans = fragMgr.beginTransaction();
                 UpdateAccountFragment a = new UpdateAccountFragment(accountID);
@@ -68,8 +70,6 @@ public class AllAccountsFragment extends Fragment {
                 fragTrans.addToBackStack(null);
                 fragTrans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 fragTrans.commit();
-
-
             }
         });
 
@@ -78,7 +78,6 @@ public class AllAccountsFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selected = accountsList.getItemAtPosition(i).toString();
                 Toast.makeText(getActivity(),selected + "Long Clicked :)" , Toast.LENGTH_SHORT).show();
-
 //
                 return true;
             }
@@ -97,6 +96,14 @@ public class AllAccountsFragment extends Fragment {
                 fragTrans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 fragTrans.commit();
                 getActivity().setTitle("New Account");
+            }
+        });
+
+        Button aboutBTN = (Button)rootView.findViewById(R.id.aboutBTN);
+        aboutBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),About.class));
             }
         });
         return rootView;

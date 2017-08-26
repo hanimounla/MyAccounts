@@ -22,4 +22,8 @@
         <item name="di_outAnimation">@anim/anim_scale_out</item>
     </style>
 
+    <style name="haniTheme" parent="Theme.AppCompat.NoActionBar" >
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
+    </style>
+
 </resources>

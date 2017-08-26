@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hani__000.myaccounts.About">
+
+    <ImageView
+        android:id="@+id/imageAbout"
+        android:layout_width="300sp"
+        android:layout_height="300sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@android:drawable/ic_lock_idle_lock"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Accounts \n programmed by \nHani Mounla\nhani-mounla@live.com"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/imageAbout"
+        android:id="@+id/aboutTXT"
+        android:layout_centerHorizontal="true" />
+
+    <com.rey.material.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CancelFBTN"
+        android:background="@drawable/close"
+        android:layout_below="@id/aboutTXT"
+        android:layout_marginTop="20sp"
+        android:layout_centerHorizontal="true"
+
+
+        />
+</RelativeLayout>
