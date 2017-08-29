@@ -106,6 +106,14 @@ public class AllAccountsFragment extends Fragment {
                 startActivity(new Intent(getActivity(),About.class));
             }
         });
+
+        Button settingsBTN = (Button)rootView.findViewById(R.id.settingsBTN);
+        settingsBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),Settings.class));
+            }
+        });
         return rootView;
     }
 

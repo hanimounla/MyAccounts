@@ -16,12 +16,14 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.SimpleDialog;
 import com.rey.material.widget.CompoundButton;
 import com.rey.material.widget.FloatingActionButton;
+import com.rey.material.widget.TextView;
 
 /**
  * Created by hani-_000 on 2017-04-18.
  */
 public class UpdateAccountFragment extends Fragment {
     EditText WebSiteTB, eMailTB, UserNameTB, PasswordTB;
+    TextView accountLBL;
     FloatingActionButton updateFBTN, cancelFBTN , deleteFBTN;
     CompoundButton showPassBTN;
     Account acc;
@@ -47,12 +49,12 @@ public class UpdateAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_update_account, container, false);
-        getActivity().setTitle("Edit Account");
 
         WebSiteTB = (EditText) rootView.findViewById(R.id.webSiteTB);
         eMailTB = (EditText) rootView.findViewById(R.id.emailTB);
         UserNameTB = (EditText) rootView.findViewById(R.id.userNameTB);
         PasswordTB = (EditText) rootView.findViewById(R.id.passwordTB);
+
 
         showPassBTN = (CompoundButton) rootView.findViewById(R.id.showPass);
 

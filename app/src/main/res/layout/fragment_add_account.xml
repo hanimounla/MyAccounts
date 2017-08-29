@@ -9,6 +9,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5sp"
 
     tools:context=".AddAccountFragment">
     <TextView
@@ -16,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="Add new account" />
+        android:textColor="@color/colorPrimary"
+        android:text="ADD NEW ACCOUNT" />
 
     <LinearLayout
         android:id="@+id/add_Account_Layout"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/addNewAccountLBL"
         android:orientation="vertical"
+        android:layout_marginTop="35sp"
         >
 
         <android.support.design.widget.TextInputLayout

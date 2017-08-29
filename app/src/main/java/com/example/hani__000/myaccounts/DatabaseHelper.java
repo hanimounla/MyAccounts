@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public ArrayList<Account> getAllAccounts()
     {
-        String query = "SELECT AccountID , WebSite FROM Accounts";
+        String query = "SELECT AccountID , WebSite FROM Accounts order by WebSite";
         ArrayList<Account> Accounts = new ArrayList<Account>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor c = database.rawQuery(query, null);

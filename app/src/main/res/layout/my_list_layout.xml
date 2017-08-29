@@ -11,7 +11,7 @@
     android:textColor="#fff"
     android:layout_weight="1"
     android:id="@+id/accountNameLBL"
-    android:textSize="30sp"/>
+    android:textSize="25sp"/>
     <TextView
         android:layout_width="0sp"
         android:layout_height="45sp"

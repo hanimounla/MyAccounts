@@ -9,17 +9,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5sp"
 
     tools:context=".AddAccountFragment">
+
+    <TextView
+        android:id="@+id/AccountLBL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:text="EDIT ACCOUNT" />
 
     <LinearLayout
         android:id="@+id/update_Account_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/AccountLBL"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp">
+        android:layout_marginTop="35dp">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
