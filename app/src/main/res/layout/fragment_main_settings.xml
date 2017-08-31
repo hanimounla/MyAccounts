@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hani__000.myaccounts.Settings"
+    android:layout_margin="5sp">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:textSize="30sp"
+        android:id="@+id/changePass"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="165dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change color"
+        android:textSize="30sp"
+        android:id="@+id/changeColor"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/changePass"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
