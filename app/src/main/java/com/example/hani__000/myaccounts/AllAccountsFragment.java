@@ -76,8 +76,8 @@ public class AllAccountsFragment extends Fragment {
         accountsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String selected = accountsList.getItemAtPosition(i).toString();
-                Toast.makeText(getActivity(),selected + "Long Clicked :)" , Toast.LENGTH_SHORT).show();
+//                String selected = accountsList.getItemAtPosition(i).toString();
+//                Toast.makeText(getActivity(),selected + "Long Clicked :)" , Toast.LENGTH_SHORT).show();
 //
                 return true;
             }
