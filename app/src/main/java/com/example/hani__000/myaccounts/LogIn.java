@@ -25,6 +25,7 @@ public class LogIn extends AppCompatActivity {
     String PREF_PASSWORD ="prefsPassword";
     String PREF_SAVED = "prefsSaved";
     String PREF_FIRST_TIME = "prefsFirstTime";
+    int PREF_COLOR = R.color.colorPrimary;
     SharedPreferences pref ;
 
     String enterdName;

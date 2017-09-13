@@ -18,6 +18,8 @@ public class SettingsMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main_settings, container, false);
+        getActivity().setTheme(R.style.AppTheme);
+
 
 
         Button changePassBTN = (Button)rootView.findViewById(R.id.changePass);
@@ -34,6 +36,18 @@ public class SettingsMainFragment extends Fragment {
             }
         });
 
+        final int x = 0;
+        Button changeColor = (Button)rootView.findViewById(R.id.changeColor);
+        changeColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (x == 0) {
+                }
+
+                else
+                    getActivity().setTheme(R.style.haniTheme);
+            }
+        });
         return rootView;
     }
 }
