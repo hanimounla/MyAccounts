@@ -46,7 +46,7 @@ public class LogIn extends AppCompatActivity {
         userNameTB = (EditText) findViewById(R.id.ownerNameTB);
         userPasswordTB = (EditText) findViewById(R.id.ownerPasswordTB);
         retypepassTB = (EditText) findViewById(R.id.retypePass);
-        rememberMe = (CheckBox)findViewById(R.id.rememberMeCB);
+        rememberMe = (CheckBox) findViewById(R.id.rememberMeCB);
         btnlogin = (Button) findViewById(R.id.btnLogin);
 
         firstTime = checkFirstTimeStart();
@@ -81,12 +81,12 @@ public class LogIn extends AppCompatActivity {
             confirmPass = retypepassTB.getText().toString();
             if(enterdPass.equals(confirmPass))
             {
-                pref.edit().putBoolean(PREF_FIRST_TIME,false)
-                           .putString(PREF_USERNAME,enterdName)
-                           .putString(PREF_PASSWORD,enterdPass)
-                           .putBoolean(PREF_SAVED,rememberMe.isChecked())
+                pref.edit().putBoolean(PREF_FIRST_TIME, false)
+                           .putString(PREF_USERNAME, enterdName)
+                           .putString(PREF_PASSWORD, enterdPass)
+                           .putBoolean(PREF_SAVED, rememberMe.isChecked())
                            .commit();
-                startActivity(new Intent(LogIn.this,MainActivity.class));
+                startActivity(new Intent(LogIn.this, MainActivity.class));
                 finish();
             }
             else
@@ -122,7 +122,7 @@ public class LogIn extends AppCompatActivity {
     private void checkRememberMeSettings() {
 
         String upass = pref.getString(PREF_PASSWORD, "");
-        Boolean saved = pref.getBoolean(PREF_SAVED,false);
+        Boolean saved = pref.getBoolean(PREF_SAVED, false);
 
         if (saved) {
             userPasswordTB.setText(upass);

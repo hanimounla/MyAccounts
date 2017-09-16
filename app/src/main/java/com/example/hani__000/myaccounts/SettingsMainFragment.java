@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * Created by hani-_000 on 2017-08-31.
@@ -17,8 +18,7 @@ public class SettingsMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_main_settings, container, false);
-        getActivity().setTheme(R.style.AppTheme);
+        final View rootView = inflater.inflate(R.layout.fragment_main_settings, container, false);
 
 
 
@@ -36,16 +36,13 @@ public class SettingsMainFragment extends Fragment {
             }
         });
 
-        final int x = 0;
-        Button changeColor = (Button)rootView.findViewById(R.id.changeColor);
+        final Button changeColor = (Button)rootView.findViewById(R.id.changeColor);
         changeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (x == 0) {
-                }
-
-                else
-                    getActivity().setTheme(R.style.haniTheme);
+                LinearLayout l = (LinearLayout)rootView.findViewById(R.id.buttonsLayout);
+                l.setVisibility(View.VISIBLE);
+                changeColor.setText("Cancel");
             }
         });
         return rootView;

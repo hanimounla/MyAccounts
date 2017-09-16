@@ -25,7 +25,6 @@ public class ChangePasswordFragment extends Fragment{
     String oldPassword;
     SharedPreferences pref;
     String PREF_PASSWORD = "prefsPassword";
-    SnackBar mSnackBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
