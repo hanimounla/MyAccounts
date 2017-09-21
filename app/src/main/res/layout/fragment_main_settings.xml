@@ -32,12 +32,14 @@
         android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/changeColor"
-        android:layout_marginTop="30sp"
-        android:layout_margin="20sp"
+        android:layout_marginTop="18dp"
         android:gravity="center"
-        android:visibility="visible">
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_below="@+id/changeColor"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/redBTN"
@@ -51,13 +53,23 @@
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginEnd="5sp"
-            android:background="@drawable/btn_green"/>
+            android:background="@drawable/btn_green" />
 
         <Button
             android:id="@+id/blueBTN"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:background="@drawable/btn_blue"/>
+            android:background="@drawable/btn_blue" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:textSize="30sp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/buttonsLayout"
+         />
 </RelativeLayout>

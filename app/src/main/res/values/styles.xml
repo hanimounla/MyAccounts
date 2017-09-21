@@ -23,8 +23,13 @@
     </style>
 
     <style name="haniTheme" parent="Theme.AppCompat.NoActionBar" >
-        <item name="colorAccent">@android:color/holo_blue_dark</item>
-        <item name="colorPrimary">@android:color/holo_blue_dark</item>
+        <item name="colorAccent">@android:color/holo_blue_light</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="haniThemeRed" parent="haniTheme" >
+        <item name="colorPrimary">@android:color/holo_red_dark</item>
+        <item name="colorAccent">@android:color/holo_red_dark</item>
     </style>
 
 </resources>

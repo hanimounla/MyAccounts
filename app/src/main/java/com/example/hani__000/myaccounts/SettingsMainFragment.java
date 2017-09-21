@@ -1,5 +1,6 @@
 package com.example.hani__000.myaccounts;
 
+import android.content.res.ColorStateList;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,11 +16,49 @@ import android.widget.LinearLayout;
  */
 
 public class SettingsMainFragment extends Fragment {
+
+    Button [] ColorsButtons = new Button[3];
+    LinearLayout buttonsLayout;
+    Button apply;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_main_settings, container, false);
 
+        buttonsLayout = (LinearLayout)rootView.findViewById(R.id.buttonsLayout);
+        buttonsLayout.setVisibility(View.INVISIBLE);
+
+        ColorsButtons[0] = (Button)rootView.findViewById(R.id.redBTN);
+        ColorsButtons[1] = (Button)rootView.findViewById(R.id.greenBTN);
+        ColorsButtons[2] = (Button)rootView.findViewById(R.id.blueBTN);
+
+        ColorsButtons[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ColorsButtons[0].setBackgroundResource(R.drawable.check);
+                ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
+                ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
+            }
+        });
+
+        ColorsButtons[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
+                ColorsButtons[1].setBackgroundResource(R.drawable.check);
+                ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
+            }
+        });
+
+        ColorsButtons[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
+                ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
+                ColorsButtons[2].setBackgroundResource(R.drawable.check);
+            }
+        });
 
 
         Button changePassBTN = (Button)rootView.findViewById(R.id.changePass);
@@ -42,7 +81,24 @@ public class SettingsMainFragment extends Fragment {
             public void onClick(View view) {
                 LinearLayout l = (LinearLayout)rootView.findViewById(R.id.buttonsLayout);
                 l.setVisibility(View.VISIBLE);
-                changeColor.setText("Cancel");
+                if(changeColor.getText().toString().equals("CHANGE COLOR")){
+                     changeColor.setText("Cancel");
+                    buttonsLayout.setVisibility(View.VISIBLE);
+                apply.setVisibility(View.VISIBLE);
+                }
+                else{
+                    changeColor.setText("CHANGE COLOR");
+                    buttonsLayout.setVisibility(View.INVISIBLE);
+                    apply.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        apply = (Button)rootView.findViewById(R.id.apply);
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         return rootView;
