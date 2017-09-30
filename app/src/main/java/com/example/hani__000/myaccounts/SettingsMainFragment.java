@@ -1,6 +1,7 @@
 package com.example.hani__000.myaccounts;
 
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +29,7 @@ public class SettingsMainFragment extends Fragment {
 
         buttonsLayout = (LinearLayout)rootView.findViewById(R.id.buttonsLayout);
         buttonsLayout.setVisibility(View.INVISIBLE);
+        apply = (Button)rootView.findViewById(R.id.apply);
 
         ColorsButtons[0] = (Button)rootView.findViewById(R.id.redBTN);
         ColorsButtons[1] = (Button)rootView.findViewById(R.id.greenBTN);
@@ -39,6 +41,8 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.check);
                 ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
                 ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
+                apply.setBackgroundColor(Color.RED);
+                changeColor(0);
             }
         });
 
@@ -48,6 +52,7 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
                 ColorsButtons[1].setBackgroundResource(R.drawable.check);
                 ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
+                apply.setBackgroundColor(Color.GREEN);
             }
         });
 
@@ -57,6 +62,7 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
                 ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
                 ColorsButtons[2].setBackgroundResource(R.drawable.check);
+                apply.setBackgroundColor(0x84f4);
             }
         });
 
@@ -102,5 +108,11 @@ public class SettingsMainFragment extends Fragment {
             }
         });
         return rootView;
+    }
+
+    private void changeColor(int color) {
+
+
+
     }
 }

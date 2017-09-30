@@ -21,7 +21,7 @@
         android:textSize="25sp"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?attr/colorPrimary"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/imageAbout"
         android:id="@+id/aboutTXT"

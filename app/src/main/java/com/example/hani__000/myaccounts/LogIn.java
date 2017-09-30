@@ -14,6 +14,8 @@ import com.rey.material.widget.CheckBox;
 
 import org.w3c.dom.Text;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class LogIn extends AppCompatActivity {
     EditText userNameTB, userPasswordTB , retypepassTB;
     TextView welcomeLBL;
@@ -36,7 +38,6 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        setTheme(R.style.haniThemeRed);
          welcomeLBL = (TextView)findViewById(R.id.welcomeLBL);
         welcomeLBL.setText("My Accounts Sign Up");
 
