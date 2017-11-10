@@ -41,8 +41,6 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.check);
                 ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
                 ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
-                apply.setBackgroundColor(Color.RED);
-                changeColor(0);
             }
         });
 
@@ -52,7 +50,6 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
                 ColorsButtons[1].setBackgroundResource(R.drawable.check);
                 ColorsButtons[2].setBackgroundResource(R.drawable.btn_blue);
-                apply.setBackgroundColor(Color.GREEN);
             }
         });
 
@@ -62,10 +59,8 @@ public class SettingsMainFragment extends Fragment {
                 ColorsButtons[0].setBackgroundResource(R.drawable.btn_red);
                 ColorsButtons[1].setBackgroundResource(R.drawable.btn_green);
                 ColorsButtons[2].setBackgroundResource(R.drawable.check);
-                apply.setBackgroundColor(0x84f4);
             }
         });
-
 
         Button changePassBTN = (Button)rootView.findViewById(R.id.changePass);
         changePassBTN.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +106,5 @@ public class SettingsMainFragment extends Fragment {
     }
 
     private void changeColor(int color) {
-
-
-
     }
 }
