@@ -3,6 +3,20 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:layout_width="0sp"
+        android:layout_height="0sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ID"
+        android:textColor="#FFF"
+        android:id="@+id/accountIDLBL"
+        android:textSize="30sp"/>
+    <com.rey.material.widget.ImageView
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:id="@+id/accountImage"
+        android:src="@drawable/facebook"/>
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="45sp"
@@ -12,12 +26,4 @@
     android:layout_weight="1"
     android:id="@+id/accountNameLBL"
     android:textSize="25sp"/>
-    <TextView
-        android:layout_width="0sp"
-        android:layout_height="45sp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ID"
-        android:textColor="#FFF"
-        android:id="@+id/accountIDLBL"
-        android:textSize="30sp"/>
 </LinearLayout>

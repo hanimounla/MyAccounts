@@ -1,5 +1,6 @@
 package com.example.hani__000.myaccounts;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,11 +21,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public static final String TABLE_Accounts = "Accounts";
 
-    public static final String COLUMN_AccountID= "AccountID";
+    public static final String COLUMN_AccountID= "_id";
     public static final String COLUMN_WebSite= "WebSite";
     public static final String COLUMN_Email= "Email";
     public static final String COLUMN_UserName = "UserName";
     public static final String COLUMN_Password= "Password";
+    public static final String COLUMN_IMAGE= "Image";
 
 
     private static final String TEXT_TYPE = " TEXT";
@@ -38,7 +40,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
                     COLUMN_WebSite + TEXT_TYPE + COMMA_SEP +
                     COLUMN_Email + TEXT_TYPE + COMMA_SEP +
                     COLUMN_UserName + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_Password+ TEXT_TYPE + ")";
+                    COLUMN_Password+ TEXT_TYPE + COMMA_SEP+
+                    COLUMN_IMAGE + " BLOB" + ")";
     public DatabaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -60,15 +63,22 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void CreateAccount(Account acc)
     {
         SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_WebSite,acc.getWebSite());
+        cv.put(COLUMN_Email ,acc.geteMail());
+        cv.put(COLUMN_UserName ,acc.getUserName());
+        cv.put(COLUMN_Password ,acc.getPassWord());
+        cv.put(COLUMN_IMAGE ,acc.getImage());
+        db.insert(TABLE_Accounts, null , cv);
 
-        String insertAccount = "Insert into Accounts (WebSite,Email,UserName,Password) values" +
-        "('" + acc.getWebSite() + "','" + acc.geteMail() + "','" + acc.getUserName() + "','" + acc.getPassWord() + "')";
-        db.execSQL(insertAccount);
+//        String insertAccount = "Insert into Accounts (WebSite,Email,UserName,Password) values" +
+//        "('" + acc.getWebSite() + "','" + acc.geteMail() + "','" + acc.getUserName() + "','" + acc.getPassWord() + "')";
+//        db.execSQL(insertAccount);
     }
 
     public ArrayList<Account> getAllAccounts()
     {
-        String query = "SELECT AccountID , WebSite FROM Accounts order by WebSite";
+        String query = "SELECT _id , WebSite , Image FROM Accounts order by WebSite";
         ArrayList<Account> Accounts = new ArrayList<Account>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
@@ -79,21 +89,30 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 Account acc = new Account();
                 acc.setAccountID(c.getInt(0));
                 acc.setWebSite(c.getString(1));
+                acc.setImage(c.getBlob(2));
                 Accounts.add(acc);
             }
         }
         return Accounts;
     }
+
+    public Cursor getAccountsByCursor()
+    {
+        String query = "SELECT _id , WebSite , Image FROM Accounts order by WebSite";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor c = database.rawQuery(query, null);
+        return c;
+    }
     public void deleteAccount(int id)
     {
-        String query = "delete from Accounts where AccountID = " + id;
+        String query = "delete from Accounts where _id = " + id;
         SQLiteDatabase database = this.getReadableDatabase();
         database.execSQL(query);
     }
     public Account getAccountByID(int id)
     {
         Account acc  = new Account();
-        String query = "SELECT * FROM Accounts WHERE AccountID = " + id;
+        String query = "SELECT * FROM Accounts WHERE _id = " + id;
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
         if (c != null)
@@ -117,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                        "Email = '" + acc.geteMail() + "', " +
                        "UserName = '" + acc.getUserName() +"', "+
                        "Password = '" + acc.getPassWord()+"' "+
-                "Where AccountId = " + acc.getAccountID();
+                "Where _id = " + acc.getAccountID();
         SQLiteDatabase database = this.getReadableDatabase();
         database.execSQL(query);
     }
