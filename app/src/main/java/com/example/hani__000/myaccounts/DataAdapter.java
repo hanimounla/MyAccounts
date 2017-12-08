@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+
 import java.util.ArrayList;
 
 public class DataAdapter extends ArrayAdapter<Account> {
@@ -22,11 +24,12 @@ public class DataAdapter extends ArrayAdapter<Account> {
 
     public DataAdapter(Context context, ArrayList<Account> account){
         super(context, R.layout.fragment_all_accounts, account);
-        this.context=context;
-        this.mcontact=account;
+        this.context = context;
+        this.mcontact = account;
     }
 
     public class Holder{
+        TextView id;
         TextView nameFV;
         ImageView pic;
     }
@@ -40,25 +43,25 @@ public class DataAdapter extends ArrayAdapter<Account> {
 
         Holder viewHolder; // view lookup cache stored in tag
 
-        if (convertView == null) {
-
+        if (convertView == null)
+        {
             viewHolder = new Holder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.fragment_all_accounts, parent, false);
 
+            viewHolder.id = (TextView)convertView.findViewById(R.id.accountIDLBL);
             viewHolder.nameFV = (TextView) convertView.findViewById(R.id.accountNameLBL);
             viewHolder.pic = (ImageView) convertView.findViewById(R.id.accountImage);
 
-
             convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (Holder) convertView.getTag();
+
         }
+        else
+            viewHolder = (Holder) convertView.getTag();
 
 
         viewHolder.nameFV.setText(data.getWebSite());
         viewHolder.pic.setImageBitmap(convertToBitmap(data.getImage()));
-
 
         // Return the completed view to render on screen
         return convertView;
@@ -66,9 +69,6 @@ public class DataAdapter extends ArrayAdapter<Account> {
     //get bitmap image from byte array
 
     private Bitmap convertToBitmap(byte[] b){
-
         return BitmapFactory.decodeByteArray(b, 0, b.length);
-
     }
-
 }

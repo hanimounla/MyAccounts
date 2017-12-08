@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by hani-_000 on 2017-03-18.
@@ -76,10 +77,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
 //        db.execSQL(insertAccount);
     }
 
-    public ArrayList<Account> getAllAccounts()
+    public List<Account> getAllAccounts()
     {
         String query = "SELECT _id , WebSite , Image FROM Accounts order by WebSite";
-        ArrayList<Account> Accounts = new ArrayList<Account>();
+        List<Account> Accounts = new ArrayList<Account>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
         if (c != null)

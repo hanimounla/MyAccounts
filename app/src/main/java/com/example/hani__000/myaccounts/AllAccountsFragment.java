@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +23,6 @@ import com.rey.material.widget.FloatingActionButton;
 import com.rey.material.widget.ImageView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by hani-_000 on 2017-04-15.
@@ -42,22 +37,22 @@ public class AllAccountsFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_all_accounts, container, false);
 
-//        List<Map<String, String>> accountsArrayList  = new ArrayList<Map<String, String>>();
-        /*DatabaseHelper db = new DatabaseHelper(getActivity());
-        List<Account> Accounts = db.getAllAccounts();
-        for (Account account : Accounts)
-        {
-            Map<String, String> accountRow = new HashMap<String, String>();
-            String accountId = account.getAccountID() + "";
-            accountRow.put("A", account.getWebSite());
-            accountRow.put("B", accountId);
-            accountsArrayList.add(accountRow);
-        }
-        String[] from = {"A", "B"};
-        int[] views = { R.id.accountNameLBL, R.id.accountIDLBL};
-        final SimpleAdapter ADA = new SimpleAdapter(getActivity(),
-                accountsArrayList, R.layout.my_list_layout, from,views);
-        accountsList.setAdapter(ADA);*/
+////        List<Map<String, String>> accountsArrayList  = new ArrayList<Map<String, String>>();
+//        /*DatabaseHelper db = new DatabaseHelper(getActivity());
+//        List<Account> Accounts = db.getAllAccounts();
+//        for (Account account : Accounts)
+//        {
+//            Map<String, String> accountRow = new HashMap<String, String>();
+//            String accountId = account.getAccountID() + "";
+//            accountRow.put("A", account.getWebSite());
+//            accountRow.put("B", accountId);
+//            accountsArrayList.add(accountRow);
+//        }
+//        String[] from = {"A", "B"};
+//        int[] views = { R.id.accountNameLBL, R.id.accountIDLBL};
+//        final SimpleAdapter ADA = new SimpleAdapter(getActivity(),
+//                accountsArrayList, R.layout.my_list_layout, from,views);
+//        accountsList.setAdapter(ADA);*/
 
         accountsList = (ListView) rootView.findViewById(R.id.AccountsList);
         accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,8 +107,28 @@ public class AllAccountsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            setUpViews();
+        ShowRecords();
 
+    }
+    Account dataModel;
+    private void ShowRecords(){
+        DatabaseHelper db = new DatabaseHelper(getActivity());
+        DataAdapter data;
+
+        final ArrayList<Account> accounts = new ArrayList<>(db.getAllAccounts() );
+        data = new DataAdapter(getActivity(), accounts);
+
+        accountsList.setAdapter(data);
+
+        accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                dataModel = accounts.get(position);
+
+                Toast.makeText(getActivity(),String.valueOf(dataModel.getAccountID()), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setUpViews() {
