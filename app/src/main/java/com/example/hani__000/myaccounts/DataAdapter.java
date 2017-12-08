@@ -21,6 +21,7 @@ public class DataAdapter extends ArrayAdapter<Account> {
 
     Context context;
     ArrayList<Account> mcontact;
+    View view;
 
     public DataAdapter(Context context, ArrayList<Account> account){
         super(context, R.layout.fragment_all_accounts, account);
@@ -29,9 +30,9 @@ public class DataAdapter extends ArrayAdapter<Account> {
     }
 
     public class Holder{
-        TextView id;
-        TextView nameFV;
-        ImageView pic;
+        TextView id = (TextView)view.findViewById(R.id.accountIDLBL);
+        TextView nameFV = (TextView) view.findViewById(R.id.accountNameLBL);
+        ImageView pic = (ImageView) view.findViewById(R.id.accountImage);
     }
 
     @Override
@@ -49,9 +50,9 @@ public class DataAdapter extends ArrayAdapter<Account> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.fragment_all_accounts, parent, false);
 
-            viewHolder.id = (TextView)convertView.findViewById(R.id.accountIDLBL);
-            viewHolder.nameFV = (TextView) convertView.findViewById(R.id.accountNameLBL);
-            viewHolder.pic = (ImageView) convertView.findViewById(R.id.accountImage);
+//            viewHolder.id = (TextView)view.findViewById(R.id.accountIDLBL);
+//            viewHolder.nameFV = (TextView) view.findViewById(R.id.accountNameLBL);
+//            viewHolder.pic =  (ImageView) view.findViewById(R.id.accountImage);
 
             convertView.setTag(viewHolder);
 
@@ -60,6 +61,9 @@ public class DataAdapter extends ArrayAdapter<Account> {
             viewHolder = (Holder) convertView.getTag();
 
 
+        assert data != null;
+        int AccountId  = data.getAccountID();
+        viewHolder.id.setText(AccountId + "");
         viewHolder.nameFV.setText(data.getWebSite());
         viewHolder.pic.setImageBitmap(convertToBitmap(data.getImage()));
 

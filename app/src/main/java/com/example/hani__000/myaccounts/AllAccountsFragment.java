@@ -110,7 +110,7 @@ public class AllAccountsFragment extends Fragment {
         ShowRecords();
 
     }
-    Account dataModel;
+//    Account dataModel;
     private void ShowRecords(){
         DatabaseHelper db = new DatabaseHelper(getActivity());
         DataAdapter data;
@@ -120,15 +120,15 @@ public class AllAccountsFragment extends Fragment {
 
         accountsList.setAdapter(data);
 
-        accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                dataModel = accounts.get(position);
-
-                Toast.makeText(getActivity(),String.valueOf(dataModel.getAccountID()), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                dataModel = accounts.get(position);
+//
+//                Toast.makeText(getActivity(),String.valueOf(dataModel.getAccountID()), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void setUpViews() {

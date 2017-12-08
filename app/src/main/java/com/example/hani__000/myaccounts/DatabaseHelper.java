@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String INT_TYPE = " INTEGER";
-    private static final String COMMA_SEP = ",";
+    private static final String COMMA_SEP = ", ";
 
     private static final String SQL_CREATE_TABLE_Accounts =
             "CREATE TABLE " + TABLE_Accounts +
