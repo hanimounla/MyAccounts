@@ -42,7 +42,7 @@ public class UpdateAccountFragment extends Fragment {
         UserNameTB.setText(acc.getUserName());
         PasswordTB.setText(acc.getPassWord());
 
-        getActivity().setTitle("Edit account");
+        getActivity().setTitle("Edit social_account");
     }
 
     @Override

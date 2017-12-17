@@ -40,11 +40,11 @@ public class AllAccountsFragment extends Fragment {
 ////        List<Map<String, String>> accountsArrayList  = new ArrayList<Map<String, String>>();
 //        /*DatabaseHelper db = new DatabaseHelper(getActivity());
 //        List<Account> Accounts = db.getAllAccounts();
-//        for (Account account : Accounts)
+//        for (Account social_account : Accounts)
 //        {
 //            Map<String, String> accountRow = new HashMap<String, String>();
-//            String accountId = account.getAccountID() + "";
-//            accountRow.put("A", account.getWebSite());
+//            String accountId = social_account.getAccountID() + "";
+//            accountRow.put("A", social_account.getWebSite());
 //            accountRow.put("B", accountId);
 //            accountsArrayList.add(accountRow);
 //        }

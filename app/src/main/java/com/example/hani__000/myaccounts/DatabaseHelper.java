@@ -2,10 +2,15 @@ package com.example.hani__000.myaccounts;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +19,7 @@ import java.util.List;
  */
 public class DatabaseHelper extends SQLiteOpenHelper
 {
+    Context context;
 
     private String TAG = this.getClass().getSimpleName();
 
@@ -22,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public static final String TABLE_Accounts = "Accounts";
 
-    public static final String COLUMN_AccountID= "_id";
+    public static final String COLUMN_AccountID= "AccountID";
     public static final String COLUMN_WebSite= "WebSite";
     public static final String COLUMN_Email= "Email";
     public static final String COLUMN_UserName = "UserName";
@@ -46,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public DatabaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
 
@@ -79,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public List<Account> getAllAccounts()
     {
-        String query = "SELECT _id , WebSite , Image FROM Accounts order by WebSite";
+        String query = "SELECT AccountID , WebSite , Image FROM Accounts order by WebSite";
         List<Account> Accounts = new ArrayList<Account>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
@@ -99,21 +106,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public Cursor getAccountsByCursor()
     {
-        String query = "SELECT _id , WebSite , Image FROM Accounts order by WebSite";
+        String query = "SELECT AccountID , WebSite , Image FROM Accounts order by WebSite";
         SQLiteDatabase database = getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
         return c;
     }
     public void deleteAccount(int id)
     {
-        String query = "delete from Accounts where _id = " + id;
+        String query = "delete from Accounts where AccountID = " + id;
         SQLiteDatabase database = this.getReadableDatabase();
         database.execSQL(query);
     }
     public Account getAccountByID(int id)
     {
         Account acc  = new Account();
-        String query = "SELECT * FROM Accounts WHERE _id = " + id;
+        String query = "SELECT * FROM Accounts WHERE AccountID = " + id;
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.rawQuery(query, null);
         if (c != null)
@@ -132,13 +139,47 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public void updateAccount(Account acc)
     {
-        String query = "update Accounts set " +
-                       "WebSite = '" +acc.getWebSite()+"', "+
-                       "Email = '" + acc.geteMail() + "', " +
-                       "UserName = '" + acc.getUserName() +"', "+
-                       "Password = '" + acc.getPassWord()+"' "+
-                "Where _id = " + acc.getAccountID();
-        SQLiteDatabase database = this.getReadableDatabase();
-        database.execSQL(query);
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_WebSite,acc.getWebSite());
+        cv.put(COLUMN_Email ,acc.geteMail());
+        cv.put(COLUMN_UserName ,acc.getUserName());
+        cv.put(COLUMN_Password ,acc.getPassWord());
+        cv.put(COLUMN_IMAGE ,getImage(acc.getWebSite()));
+        String where = "AccountID = ?";
+        String[] whereArgs = new String[] {String.valueOf(acc.getAccountID())};
+        db.update(TABLE_Accounts, cv, where, whereArgs);
+//        String query = "update Accounts set " +
+//                       "WebSite = '" +acc.getWebSite()+"', "+
+//                       "Email = '" + acc.geteMail() + "', " +
+//                       "UserName = '" + acc.getUserName() +"', "+
+//                       "Password = '" + acc.getPassWord()+"', "+
+//                       "Image = " + acc.getImage() +
+//                "Where AccountID = " + acc.getAccountID();
+//        SQLiteDatabase database = this.getReadableDatabase();
+//        database.execSQL(query);
+    }
+
+    private byte[] image;
+    public byte[] getImage(String WebSite) {
+        Resources res =  context.getResources();
+        int icon = R.drawable.social_account;
+        String websiteLower = WebSite.toLowerCase();
+        switch (websiteLower)
+        {
+            case "facebook": icon = R.drawable.social_facebook; break;
+            case "whatsapp": icon = R.drawable.social_whatsapp; break;
+            case "youtube": icon = R.drawable.social_youtube; break;
+            case "instagram": icon = R.drawable.social_instagram; break;
+            case "twitter": icon = R.drawable.social_twitter; break;
+            case "linkedin": icon = R.drawable.social_linkedin; break;
+            default: break;
+        }
+        Drawable drawable = res.getDrawable(icon);
+        Bitmap bitmap  = ((BitmapDrawable)drawable).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        image = stream.toByteArray();
+        return image;
     }
 }

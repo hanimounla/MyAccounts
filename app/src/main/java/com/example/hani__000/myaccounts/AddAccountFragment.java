@@ -80,13 +80,17 @@ public class AddAccountFragment extends Fragment {
 
     public byte[] getImage() {
         Resources res = getResources();
-        int icon = R.drawable.about;
+        int icon = R.drawable.social_account;
         String websiteLower = webSite.toLowerCase();
         switch (websiteLower)
         {
-            case "facebook": icon = R.drawable.facebook; break;
-            case "whatsapp": icon = R.drawable.whatsapp; break;
-            case "linkedin": icon = R.drawable.linkedin;break;
+            case "facebook": icon = R.drawable.social_facebook; break;
+            case "whatsapp": icon = R.drawable.social_whatsapp; break;
+            case "youtube": icon = R.drawable.social_youtube; break;
+            case "instagram": icon = R.drawable.social_instagram; break;
+            case "twitter": icon = R.drawable.social_twitter; break;
+            case "linkedin": icon = R.drawable.social_linkedin; break;
+            default: break;
         }
         Drawable drawable = res.getDrawable(icon);
         Bitmap bitmap  = ((BitmapDrawable)drawable).getBitmap();

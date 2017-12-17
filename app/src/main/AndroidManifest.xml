@@ -11,8 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/haniTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LogIn">
+        <activity android:name=".MainActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".LogIn" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
