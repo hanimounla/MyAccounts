@@ -42,6 +42,15 @@ public class AddAccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 webSite = WebSiteTB.getText().toString();
+                char[] playing = webSite.toCharArray();
+                String first = playing[0] + "",other = "" , webSite_final;
+                first = first.toUpperCase();
+                for (int i = 1; i < playing.length; i++)
+                    other += playing[i];
+                other = other.toLowerCase();
+                webSite_final = first + other;
+                webSite = webSite_final;
+
                 String eMail = eMailTB.getText().toString();
                 String username = UserNameTB.getText().toString();
                 String passWord = PasswordTB.getText().toString();
