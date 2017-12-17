@@ -24,15 +24,15 @@ public class DataAdapter extends ArrayAdapter<Account> {
     View view;
 
     public DataAdapter(Context context, ArrayList<Account> account){
-        super(context, R.layout.fragment_all_accounts, account);
+        super(context, R.layout.my_list_layout, account);
         this.context = context;
         this.mcontact = account;
     }
 
     public class Holder{
-        TextView id = (TextView)view.findViewById(R.id.accountIDLBL);
-        TextView nameFV = (TextView) view.findViewById(R.id.accountNameLBL);
-        ImageView pic = (ImageView) view.findViewById(R.id.accountImage);
+        TextView id;
+        TextView nameFV;
+        ImageView pic ;
     }
 
     @Override
@@ -48,11 +48,11 @@ public class DataAdapter extends ArrayAdapter<Account> {
         {
             viewHolder = new Holder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.fragment_all_accounts, parent, false);
+            convertView = inflater.inflate(R.layout.my_list_layout, parent, false);
 
-//            viewHolder.id = (TextView)view.findViewById(R.id.accountIDLBL);
-//            viewHolder.nameFV = (TextView) view.findViewById(R.id.accountNameLBL);
-//            viewHolder.pic =  (ImageView) view.findViewById(R.id.accountImage);
+            viewHolder.id = (TextView)convertView.findViewById(R.id.accountIDLBL);
+            viewHolder.nameFV = (TextView) convertView.findViewById(R.id.accountNameLBL);
+            viewHolder.pic =  (ImageView) convertView.findViewById(R.id.accountImage);
 
             convertView.setTag(viewHolder);
 

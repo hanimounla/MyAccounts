@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -16,14 +15,14 @@ import android.widget.Toast;
 
 import com.rey.material.widget.FloatingActionButton;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.util.Collections;
 
 public class AddAccountFragment extends Fragment {
     EditText WebSiteTB , eMailTB , UserNameTB , PasswordTB;
     FloatingActionButton CreateAccountFBTN, cancelFBTN;
     private byte[] image;
+
+    String webSite;
 
 
     @Override
@@ -42,7 +41,7 @@ public class AddAccountFragment extends Fragment {
         CreateAccountFBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String webSite = WebSiteTB.getText().toString();
+                webSite = WebSiteTB.getText().toString();
                 String eMail = eMailTB.getText().toString();
                 String username = UserNameTB.getText().toString();
                 String passWord = PasswordTB.getText().toString();
@@ -81,7 +80,15 @@ public class AddAccountFragment extends Fragment {
 
     public byte[] getImage() {
         Resources res = getResources();
-        Drawable drawable = res.getDrawable(R.drawable.facebook);
+        int icon = R.drawable.about;
+        String websiteLower = webSite.toLowerCase();
+        switch (websiteLower)
+        {
+            case "facebook": icon = R.drawable.facebook; break;
+            case "whatsapp": icon = R.drawable.whatsapp; break;
+            case "linkedin": icon = R.drawable.linkedin;break;
+        }
+        Drawable drawable = res.getDrawable(icon);
         Bitmap bitmap  = ((BitmapDrawable)drawable).getBitmap();
         ByteArrayOutputStream  stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
